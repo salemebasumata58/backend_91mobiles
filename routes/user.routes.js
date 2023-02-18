@@ -7,6 +7,7 @@ const app = express.Router();
 
 app.post("/signup", async (req, res) => {
   const { username, email, password, phone } = req.body;
+  console.log(username, email, password, phone);
   let hash = await argon2.hash(password);
   try {
     let userExist = await User.findOne({ email });
@@ -30,6 +31,7 @@ app.post("/signup", async (req, res) => {
 
 app.post("/login", async (req, res) => {
   const { email, password } = req.body;
+console.log(email, password);
 
   try {
     let user = await User.findOne({ email });
